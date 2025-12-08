@@ -1,47 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dondlinger General Contracting - Real Estate Tours</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
         }
-
         header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo h1 {
+            margin: 0;
+            color: #667eea;
+            font-size: 1.5rem;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-menu a:hover {
+            color: #667eea;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
-
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: white;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        }
+        section {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .agent-selector {
+            margin-bottom: 2rem;
+        }
+        select {
+            padding: 0.5rem 1rem;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: white;
+        }
         .tour {
             margin-bottom: 2rem;
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-
-        .tour h2 {
-            margin-top: 0;
+        .tour h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
         }
-
         iframe {
             width: 100%;
-            height: 600px;
+            height: 500px;
             border: none;
+            border-radius: 10px;
+        }
+        .agent-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .agent-link:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
         }
     </style>
 </head>
@@ -112,18 +222,20 @@
             <div class="container">
                 <h2>Virtual Tours</h2>
                 <p>Explore our completed projects and properties with immersive 3D Matterport tours.</p>
-                <div class="tour">
-                    <h3>Sample Property Tour</h3>
-                    <p>Experience this property in 3D.</p>
-                    <iframe src="https://my.matterport.com/show/?m=8pJ6zKdWz9K" title="Sample Property Tour"
-                        allowfullscreen></iframe>
+                <div class="agent-selector">
+                    <label for="agent-select">Select Real Estate Agent:</label>
+                    <select id="agent-select">
+                        <option value="scott">Scott Stankowski</option>
+                    </select>
                 </div>
-                <div class="tour">
-                    <h3>Property Tour</h3>
-                    <p>Explore this immersive 3D tour.</p>
-                    <iframe width="853" height="480" src="https://my.matterport.com/show/?m=4XgU8LMT1qM" frameborder="0" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;" title="Property Tour"></iframe>
+                <div id="scott-tours" class="agent-tours">
+                    <a href="https://exitrealty.com/agent/Scott/Stankowski/265788" class="agent-link" target="_blank" rel="noopener">View Scott Stankowski's Profile</a>
+                    <div class="tour">
+                        <h3>Property Tour</h3>
+                        <p>Explore this immersive 3D tour.</p>
+                        <iframe width="853" height="480" src="https://my.matterport.com/show/?m=4XgU8LMT1qM" frameborder="0" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;" title="Property Tour"></iframe>
+                    </div>
                 </div>
-                <!-- Add more tours here -->
             </div>
         </section>
 
