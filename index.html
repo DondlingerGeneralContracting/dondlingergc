@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dondlinger General Contracting - Real Estate Tours</title>
+    <title>Scott Stankowski - Real Estate Virtual Tours | DondlingerGC</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 100%);
             color: #333;
         }
 
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            background: linear-gradient(135deg, #1976d2 0%, #388e3c 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .logo h1 {
             margin: 0;
-            color: #667eea;
-            font-size: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .logo p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
         }
 
         .nav-menu {
             display: flex;
+            justify-content: center;
             list-style: none;
             margin: 0;
             padding: 0;
         }
 
         .nav-menu li {
-            margin-left: 2rem;
+            margin: 0 1rem;
         }
 
         .nav-menu a {
-            color: #333;
+            color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
         }
 
         .nav-menu a:hover {
-            color: #667eea;
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .container {
@@ -69,23 +72,27 @@
         .hero {
             text-align: center;
             padding: 4rem 2rem;
-            color: white;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .hero h2 {
-            font-size: 3rem;
+            color: #1976d2;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
+            color: #555;
         }
 
         .cta-button {
             display: inline-block;
-            background: #ff6b6b;
+            background: linear-gradient(135deg, #1976d2 0%, #388e3c 100%);
             color: white;
             padding: 1rem 2rem;
             text-decoration: none;
@@ -96,50 +103,35 @@
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 10px 20px rgba(25, 118, 210, 0.3);
         }
 
         section {
             background: white;
             margin: 2rem 0;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         h2 {
-            color: #667eea;
+            color: #1976d2;
             margin-bottom: 1rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
         }
 
         .agent-selector {
+            text-align: center;
             margin-bottom: 2rem;
         }
 
         select {
             padding: 0.5rem 1rem;
-            border: 2px solid #667eea;
+            border: 2px solid #1976d2;
             border-radius: 5px;
             font-size: 1rem;
             background: white;
+            color: #333;
         }
 
         .tour {
@@ -147,11 +139,11 @@
             background: #f8f9fa;
             padding: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .tour h3 {
-            color: #667eea;
+            color: #1976d2;
             margin-bottom: 0.5rem;
         }
 
@@ -165,7 +157,7 @@
         .agent-link {
             display: inline-block;
             margin-top: 1rem;
-            color: #667eea;
+            color: #388e3c;
             text-decoration: none;
             font-weight: bold;
         }
@@ -174,97 +166,69 @@
             text-decoration: underline;
         }
 
+        .contact-info {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
         footer {
-            background: #333;
+            background: linear-gradient(135deg, #1976d2 0%, #388e3c 100%);
             color: white;
             text-align: center;
             padding: 2rem;
+        }
+
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">
-                    <h1>Dondlinger General Contracting</h1>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#tours">Tours</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
+        <div class="logo">
+            <h1>DondlingerGC</h1>
+            <p>Scott Stankowski - Real Estate Virtual Tours</p>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tours">Tours</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
-            <div class="hero-content">
-                <h2>Building Excellence, Delivering Quality</h2>
-                <p>Your trusted partner for all construction and contracting needs</p>
-                <a href="#contact" class="cta-button">Get a Quote</a>
-            </div>
-        </section>
-
-        <section id="services" class="services">
             <div class="container">
-                <h2>Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>General Contracting</h3>
-                        <p>Comprehensive project management and construction services from start to finish.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Renovations</h3>
-                        <p>Transform your space with professional renovation and remodeling services.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Commercial Construction</h3>
-                        <p>Expert commercial building solutions tailored to your business needs.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Residential Construction</h3>
-                        <p>Quality home building and improvement services for your dream home.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-                <h2>About Us</h2>
-                <p>Dondlinger General Contracting is committed to delivering exceptional construction services with
-                    integrity, quality, and professionalism. With years of experience in the industry, we bring your
-                    vision to life.</p>
-                <p>Our team of skilled professionals ensures every project is completed on time, within budget, and to
-                    the highest standards of quality.</p>
+                <h2>Welcome to Scott Stankowski's Virtual Tours</h2>
+                <p>Explore stunning 3D virtual tours of properties. Experience homes like never before with immersive Matterport technology.</p>
+                <a href="#tours" class="cta-button">View Tours</a>
             </div>
         </section>
 
         <section id="tours" class="tours">
             <div class="container">
                 <h2>Virtual Tours</h2>
-                <p>Explore our completed projects and properties with immersive 3D Matterport tours.</p>
+                <p>Discover properties through interactive 3D tours.</p>
                 <div class="agent-selector">
-                    <label for="agent-select">Select Real Estate Agent:</label>
+                    <label for="agent-select">Select Agent:</label>
                     <select id="agent-select">
                         <option value="scott">Scott Stankowski</option>
                     </select>
                 </div>
                 <div id="scott-tours" class="agent-tours">
-                    <a href="https://exitrealty.com/agent/Scott/Stankowski/265788" class="agent-link" target="_blank"
-                        rel="noopener">View Scott Stankowski's Profile</a>
+                    <a href="https://exitrealty.com/agent/Scott/Stankowski/265788" class="agent-link" target="_blank" rel="noopener">View Scott Stankowski's Exit Realty Profile</a>
                     <div class="tour">
-                        <h3>Property Tour</h3>
-                        <p>Explore this immersive 3D tour.</p>
-                        <iframe width="853" height="480" src="https://my.matterport.com/show/?m=4XgU8LMT1qM"
-                            frameborder="0" allowfullscreen
-                            allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"
-                            title="Property Tour"></iframe>
+                        <h3>Featured Property Tour</h3>
+                        <p>Take a virtual walk through this beautiful property.</p>
+                        <iframe width="853" height="480" src="https://my.matterport.com/show/?m=4XgU8LMT1qM" frameborder="0" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;" title="Property Tour"></iframe>
                     </div>
                 </div>
             </div>
@@ -272,11 +236,10 @@
 
         <section id="contact" class="contact">
             <div class="container">
-                <h2>Contact Us</h2>
-                <p>Ready to start your next project? Get in touch with us today.</p>
+                <h2>Contact</h2>
                 <div class="contact-info">
-                    <p><strong>Email:</strong> info@dondlingergc.com</p>
-                    <p><strong>Phone:</strong> (555) 123-4567</p>
+                    <p><strong>Email:</strong> dondlingergeneralcontracting@gmail.com</p>
+                    <p>For website inquiries and tour requests.</p>
                 </div>
             </div>
         </section>
@@ -284,7 +247,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Dondlinger General Contracting. All rights reserved.</p>
+            <p>&copy; 2024 DondlingerGC. All rights reserved.</p>
         </div>
     </footer>
 </body>
